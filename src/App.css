@@ -1,0 +1,53 @@
+* {
+  font-family: "Cormorant Garamond", serif;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+.navbar {
+  border: 1px solid black;
+}
+
+table {
+  width: 65%;
+  margin: auto;
+}
+
+.book-card-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.book-card {
+  width: 25%;
+  border: 1px solid black;
+  margin: 15px;
+  padding: 15px;
+}
+
+.books-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav {
+  display: flex;
+}
+
+li {
+  margin: 10px;
+}
