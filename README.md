@@ -1,6 +1,9 @@
-# Getting Started with Create React App
+# Book E-Store
+## Context
+This project is part of the office hours of the MIT Professional Certificate in Coding course.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+It was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
