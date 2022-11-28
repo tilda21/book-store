@@ -1,29 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter, Link, Routes, Route } from "react-router-dom";
+
+import Navbar from "./components/Navbar";
+import Booklist from "./components/Booklist";
 import './App.css';
 
 function App() {
+  const [books, setBooks] = useState([]);
+  const fetchBooks = () => {
+    fetch("https://api.itbook.store/1.0/new")
+      .then((res) => res.json())
+      .then((data) => setBooks(data.books))
+  }
+
+  useEffect(fetchBooks, [])
+  console.log("books: ", books);
   return (
     <div>
       <BrowserRouter>
-        <div className='navbar'>
-          <ul>
-            <div className='nav'>
-              <Link to="/">
-                <li>Home</li>
-              </Link>
-              <Link to="/favorites">
-                <li>Favorites</li>
-              </Link>
-            </div>
-            <div className='nav'>
-              <Link to="/cart">
-                <li>Cart</li>
-              </Link>
-              <li>Total: $</li>
-            </div>
-          </ul>
-        </div>
+        <Navbar/>
         <Routes>
           <Route path="/favorites" element={
             <React.Fragment>
@@ -38,9 +33,7 @@ function App() {
           }>
           </Route>
           <Route path="/" element={
-            <React.Fragment>
-              <h2>Home</h2>
-            </React.Fragment>
+            <Booklist/>
           }>
           </Route>
         </Routes>
