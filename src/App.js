@@ -7,12 +7,16 @@ import './App.css';
 
 function App() {
   const [books, setBooks] = useState([]);
+  const [price, setPrice] = useState(0);
   const fetchBooks = () => {
     fetch("https://api.itbook.store/1.0/new")
       .then((res) => res.json())
       .then((data) => setBooks(data.books))
   }
+  const handleAddToCart = (book) => {
+    setPrice(price + parseFloat(book.price.substring(1)));
 
+  }
   useEffect(fetchBooks, [])
   console.log("books: ", books);
   return (
@@ -20,6 +24,12 @@ function App() {
       <BrowserRouter>
         <Navbar/>
         <Routes>
+          <Route path='/books/:isbn13' element={
+              <React.Fragment>
+                <h2>Book Details</h2>
+              </React.Fragment>
+            }>
+          </Route>
           <Route path="/favorites" element={
             <React.Fragment>
               <h2>Favorites</h2>
@@ -33,7 +43,7 @@ function App() {
           }>
           </Route>
           <Route path="/" element={
-            <Booklist/>
+            <Booklist books={books} handleAddToCart={handleAddToCart} />
           }>
           </Route>
         </Routes>

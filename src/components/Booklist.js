@@ -1,11 +1,15 @@
 import BookCard from "./BookCard";
 
-const Booklist = () => {
+const Booklist = (props) => {
     return (
         <>
             <h2>Books Available</h2>
             <div className="books-container">
-                <BookCard />
+                {
+                    props.books.map((book) => (
+                        <BookCard  book={book} handleAddToCart={props.handleAddToCart}/>
+                    ))
+                }
             </div>
         </>
     )
